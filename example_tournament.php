@@ -46,9 +46,9 @@ return array (
                         "scores" => array(0, 2)
                     ),
                     array(
-                        "winner" => 0,
+                        "winner" => -1,
                         "teams" => array(4, 7),
-                        "scores" => array(2, 0)
+                        "scores" => array(0, 0)
                     )
                 )
             ),
