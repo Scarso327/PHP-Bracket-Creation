@@ -56,9 +56,9 @@ return array (
                 "name" => "Finals",
                 "results" => array(
                     array(
-                        "winner" => 1,
-                        "teams" => array(3, 4),
-                        "scores" => array(0, 2)
+                        "winner" => -1,
+                        "teams" => array(3, -1),
+                        "scores" => array(0, 0)
                     )
                 )
             )

@@ -34,11 +34,14 @@ class Tournament {
 
             $(".team").hover(
                 function() {
-                    console.log($(this).attr('id'));
-                    teamElements = document.getElementsByClassName($(this).attr('id'));
+                    var className = $(this).attr('id');
+                    
+                    if (className != "team--1") {
+                        teamElements = document.getElementsByClassName(className);
 
-                    for(var i=0; i < teamElements.length; i++) {
-                        teamElements[i].style.background = "#e69138";
+                        for(var i=0; i < teamElements.length; i++) {
+                            teamElements[i].style.background = "#e69138";
+                        }
                     }
                 }, 
                 function() {
@@ -61,7 +64,7 @@ class Tournament {
                 foreach($result["teams"] as $key=>$team) {
                     ?>
                     <div id="team-<?=$team;?>" class="team team-<?=$team;?> <?=($result["winner"] == $key) ? 'winner' : ''; ?>">
-                        <div class="name"><?=self::$teams[$team];?></div>
+                        <div class="name"><?=($team == -1) ? 'TBD' : self::$teams[$team];?></div>
                         <div class="score"><?=$result["scores"][$key];?></div>
                     </div>
                     <?php
