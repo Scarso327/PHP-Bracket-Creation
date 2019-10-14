@@ -4,7 +4,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, p, ul, ol, li, dl, dt, dd {
-    margin: 5;
+    margin: 5px;
     padding: 0;
 }
 
@@ -51,6 +51,10 @@ h1, h2, h3, h4, h5, p, ul, ol, li, dl, dt, dd {
 
 .result-block .team:first-child {
     border-bottom: 1px solid #999;
+}
+
+.result-block .team.finalWinner {
+    border-bottom: 0px;
 }
 
 .result-block .team .name {

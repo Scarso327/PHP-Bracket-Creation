@@ -2,8 +2,13 @@
 class Tournament {
 
     public static $teams;
+    public static $winner = -1;
 
-    public function __construct($tournament) {
+    /*
+    ** $tournament = Array (Contains Tournament Details (Results, Etc)) (Required)
+    ** $sepWinner = Boolean (Tells us whether to display the winner seperately at the end) (Optional)
+    */
+    public function __construct($tournament, $showWinner = false, $onlyShowWhenFinished = false) {
         self::$teams = $tournament["teams"];
 
         ?>
@@ -19,7 +24,23 @@ class Tournament {
                         <div class="stage">
                             <h4><?=$stage["name"];?></h4>
                             <div class="results">
-                                <?php echo self::renderStage($stage); ?>
+                                <?php echo self::renderStage($stage, (array_key_last($bracket) == $key)); ?>
+                            </div>
+                        </div>
+                        <?php
+                    }
+
+                    if ($showWinner && ($onlyShowWhenFinished || self::$winner)) {
+                        ?>
+                        <div class="stage">
+                            <h4>Winner</h4>
+                            <div class="results">
+                                <div class="result-block">
+                                    <div id="team-<?=self::$winner;?>" class="team <?=(self::$winner != -1) ? 'winner' : '';?> finalWinner team-<?=self::$winner;?> <?=($result["winner"] == $key) ? 'winner' : ''; ?>">
+                                        <div class="name"><?=(self::$winner == -1) ? 'TBD' : self::$teams[self::$winner];?></div>
+                                        <div class="score">1st</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <?php
@@ -55,7 +76,7 @@ class Tournament {
         <?php
     }
 
-    public function renderStage($stage) {
+    public function renderStage($stage, $finalStage = false) {
 
         foreach($stage["results"] as $result) {
             ?>
@@ -68,6 +89,10 @@ class Tournament {
                         <div class="score"><?=$result["scores"][$key];?></div>
                     </div>
                     <?php
+
+                    if (array_key_last($result["teams"]) == $key && ($result["winner"] == $key) && $finalStage) {
+                        self::$winner = $team;
+                    }
                 }
                 ?>
             </div>
