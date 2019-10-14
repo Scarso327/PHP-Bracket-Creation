@@ -1,0 +1,65 @@
+body {
+    margin: 0;
+    font-family: "Whitney", Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+}
+
+h1, h2, h3, h4, h5, p, ul, ol, li, dl, dt, dd {
+    margin: 5;
+    padding: 0;
+}
+
+.container {
+    max-width: 60%;
+    margin: 0 auto;
+}
+
+.brackets {
+    padding: 15px;
+}
+
+.brackets .bracket {
+    display: flex;
+}
+
+.brackets .bracket .stage {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.brackets .bracket .stage h4 {
+    text-align: center;
+}
+
+.brackets .bracket .stage .results {
+    margin: auto 0;
+}
+
+.result-block {
+    margin: 10px;
+    background-color: #dddddd;
+}
+
+.result-block .team {
+    display: flex;
+    padding: 5px;
+}
+
+.result-block .team.winner {
+    background-color: #52bd42;
+}
+
+.result-block .team:first-child {
+    border-bottom: 1px solid #999;
+}
+
+.result-block .team .name {
+    flex-basis: 70%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.result-block .team .score {
+    margin-left: auto;
+}
